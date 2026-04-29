@@ -14,8 +14,8 @@ export const fadeIn = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }
-};
+  transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] as const }
+} as const;
 
 export function PageHeader({ title, subtitle }: { title: string, subtitle: string }) {
   return (
@@ -831,29 +831,16 @@ export function Transfers() {
                 Our hotel collaborates with G2VIP Transfer, a team of professional drivers offering excellent local knowledge and fixed preferential rates.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                 <div>
-                    <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface/50 mb-3">Port & Airport</h4>
-                    <ul className="space-y-2 text-sm font-sans text-on-surface">
-                       <li className="flex justify-between border-b border-outline-variant/10 pb-2"><span>2–3 persons</span> <strong>€30</strong></li>
-                       <li className="flex justify-between border-b border-outline-variant/10 pb-2"><span>4–5 persons</span> <strong>€35</strong></li>
-                       <li className="flex justify-between border-b border-outline-variant/10 pb-2"><span>6–8 persons</span> <strong>€40</strong></li>
-                    </ul>
-                 </div>
-                 <div>
-                    <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface/50 mb-3">Island Transfers</h4>
-                    <ul className="space-y-2 text-sm font-sans text-on-surface">
-                       <li className="flex justify-between border-b border-outline-variant/10 pb-2"><span>Up to 8 persons</span> <strong>€40</strong></li>
-                    </ul>
-                 </div>
-              </div>
+              <p className="text-on-surface/70 font-sans leading-relaxed mb-6">
+                Contact the driver directly on WhatsApp for transfer details and to arrange pickup.
+              </p>
 
               <div className="flex flex-wrap gap-4 items-center">
                 <button 
                   onClick={() => window.open("https://wa.me/306934596482", "_blank")}
                   className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl text-[10px] uppercase font-bold tracking-widest hover:bg-[#20bd5a] transition-colors shadow-md shadow-[#25D366]/20"
                 >
-                  <MessageCircle className="w-5 h-5" /> Book G2VIP
+                  <MessageCircle className="w-5 h-5" /> Contact Driver
                 </button>
                 <p className="text-[10px] uppercase tracking-[0.1em] font-bold text-on-surface/40">+30 693 459 6482</p>
               </div>
