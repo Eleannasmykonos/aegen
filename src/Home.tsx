@@ -4,6 +4,8 @@ import {
   AlertCircle,
   Car,
   CheckCircle2,
+  Briefcase,
+  Bus,
   ChevronDown,
   Clock,
   Compass,
@@ -287,12 +289,116 @@ export default function HomePage() {
             <motion.div {...fadeIn}>
               <h3 className="text-4xl font-serif italic mb-4">Transfers</h3>
               <p className="font-sans text-on-surface/60 text-sm max-w-md">
-                Seamless movement across the island, from private cars to the SeaBus.
+                Seamless movement across the island, plus laundry, luggage help, and the practical transport notes guests actually need.
               </p>
             </motion.div>
           </div>
 
           <div className="px-6 space-y-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <motion.div
+                {...fadeIn}
+                className="bg-surface-container-lowest rounded-3xl p-8 border border-outline-variant/20 shadow-sm relative overflow-hidden"
+              >
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/5 rounded-full blur-2xl pointer-events-none" />
+                <div className="relative z-10">
+                  <div className="flex items-start gap-5">
+                    <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center shrink-0 border border-blue-100">
+                      <Info className="w-8 h-8" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-3 mb-2">
+                        <h4 className="text-3xl font-serif">Fresh & Clean</h4>
+                        <span className="bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-blue-200">
+                          EUR 1 / Item
+                        </span>
+                      </div>
+                      <p className="text-on-surface/70 font-sans leading-relaxed mb-6">
+                        Laundry is available for wash and dry at EUR 1 per item.
+                      </p>
+                      <div className="space-y-3">
+                        {[
+                          "Pack your clothes into the designated laundry bag.",
+                          "Place the exact change inside the bag.",
+                          "Leave the bag by your door inside your room for morning pickup.",
+                          "Laundry is returned the following morning."
+                        ].map((step) => (
+                          <div key={step} className="flex gap-3 text-sm font-sans text-on-surface/80 leading-relaxed">
+                            <CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" />
+                            <span>{step}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                {...fadeIn}
+                className="bg-surface-container-lowest rounded-3xl p-8 border border-outline-variant/20 shadow-sm relative overflow-hidden"
+              >
+                <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/5 rounded-full blur-2xl pointer-events-none" />
+                <div className="relative z-10">
+                  <div className="flex items-start gap-5">
+                    <div className="w-16 h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center shrink-0 border border-amber-100">
+                      <Briefcase className="w-8 h-8" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-3 mb-2">
+                        <h4 className="text-3xl font-serif">Luggage Transfer</h4>
+                        <span className="bg-amber-100 text-amber-700 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-amber-200">
+                          Arrange Ahead
+                        </span>
+                      </div>
+                      <p className="text-on-surface/70 font-sans leading-relaxed mb-5">
+                        We can help move your bags to your taxi or bus station so you do not have to handle the heavy lifting.
+                      </p>
+                      <div className="bg-amber-50 border border-amber-200/60 p-5 rounded-2xl mb-5 shadow-sm">
+                        <div className="flex gap-4 items-start text-amber-900">
+                          <Clock className="w-6 h-6 shrink-0 mt-0.5 text-amber-600" />
+                          <p className="text-sm font-sans leading-relaxed">
+                            <strong className="block mb-1 text-amber-950 font-bold">Timing is everything</strong>
+                            Please let us know 30 minutes before departure so pickup can be coordinated in time.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-4 items-center">
+                        <button
+                          onClick={() => window.open("https://wa.me/306977246788", "_blank")}
+                          className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl text-[10px] uppercase font-bold tracking-widest hover:bg-[#20bd5a] transition-colors shadow-md shadow-[#25D366]/20"
+                        >
+                          <MessageCircle className="w-5 h-5" /> Schedule Pickup
+                        </button>
+                        <p className="text-[10px] uppercase tracking-[0.1em] font-bold text-on-surface/40">Include payment with luggage</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            <motion.div
+              {...fadeIn}
+              className="bg-surface-container-low rounded-3xl p-8 flex flex-col md:flex-row items-center gap-8 shadow-sm border border-outline-variant/10"
+            >
+              <div className="w-16 h-16 bg-white border border-outline-variant/20 rounded-[1.5rem] flex items-center justify-center shrink-0">
+                <Briefcase className="w-8 h-8 text-primary" />
+              </div>
+              <div className="text-center md:text-left flex-1">
+                <h4 className="text-2xl font-serif mb-2">Luggage Storage</h4>
+                <p className="font-sans text-on-surface/70 text-sm leading-relaxed mb-4">
+                  Storage is available on checkout only when locker space remains. Message your room number and preferred drop-off time first.
+                </p>
+                <button
+                  onClick={() => window.open("https://wa.me/306977246788", "_blank")}
+                  className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary hover:text-primary-container transition-colors border-b border-primary/20 pb-1"
+                >
+                  <MessageCircle className="w-4 h-4" /> Request Storage
+                </button>
+              </div>
+            </motion.div>
+
             <motion.div
               className="p-10 bg-surface-container-lowest rounded-[3rem] shadow-sm relative overflow-hidden group"
               {...fadeIn}
@@ -302,54 +408,117 @@ export default function HomePage() {
                 <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
                   <Zap className="w-6 h-6 text-primary" />
                 </div>
-                <h4 className="text-3xl font-serif mb-3">Private Chauffeur</h4>
-                <p className="text-base text-on-surface/60 mb-10 max-w-sm leading-relaxed">
-                  Fast, reliable, and premium service across Mykonos. Professional English-speaking drivers.
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <h4 className="text-3xl font-serif">Private Transfers | G2VIP</h4>
+                  <span className="bg-zinc-100 text-zinc-700 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-zinc-200">
+                    24/7 Service
+                  </span>
+                </div>
+                <p className="text-base text-on-surface/60 mb-4 max-w-2xl leading-relaxed">
+                  Our hotel works with G2VIP Transfer, a professional driver team with strong local knowledge and fixed preferential rates.
+                </p>
+                <p className="text-base text-on-surface/60 mb-10 max-w-2xl leading-relaxed">
+                  Contact the driver directly on WhatsApp for pricing, pickup details, and arrangements.
                 </p>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                   <div className="flex flex-col">
-                    <span className="text-[10px] uppercase tracking-widest text-on-surface/40 font-bold mb-1">Starting from</span>
-                    <span className="text-3xl font-serif">EUR 30 - EUR 40</span>
+                    <span className="text-[10px] uppercase tracking-widest text-on-surface/40 font-bold mb-1">Direct Driver Contact</span>
+                    <span className="text-2xl font-serif">+30 693 459 6482</span>
                   </div>
                   <button
-                    onClick={() => window.open("https://wa.me/306977246788?text=Hello%2C%20I%20would%20like%20to%20book%20a%20private%20chauffeur", "_blank")}
+                    onClick={() => window.open("https://wa.me/306934596482", "_blank")}
                     className="w-full sm:w-auto bg-[#25D366] text-white px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:scale-105 transition-transform shadow-lg shadow-[#25D366]/20"
                   >
-                    <MessageCircle className="w-5 h-5" /> WhatsApp Concierge
+                    <MessageCircle className="w-5 h-5" /> Contact Driver
                   </button>
                 </div>
               </div>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <motion.div className="p-8 bg-surface-container-lowest rounded-3xl" {...fadeIn}>
-                <div className="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center mb-4">
-                  <Navigation className="w-5 h-5 text-primary" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <motion.div className="p-8 bg-surface-container-lowest rounded-3xl border border-outline-variant/20 shadow-sm" {...fadeIn}>
+                <div className="w-10 h-10 bg-cyan-50 rounded-xl flex items-center justify-center mb-4">
+                  <Ship className="w-5 h-5 text-cyan-600" />
                 </div>
-                <h5 className="font-serif text-xl mb-2">Island Bus</h5>
-                <p className="text-sm text-on-surface/50 mb-6 leading-relaxed">Multiple routes to all major beaches and villages.</p>
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <h5 className="font-serif text-2xl">SeaBus Water Taxi</h5>
+                  <span className="bg-cyan-100 text-cyan-700 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-cyan-200">
+                    EUR 2.50 / Way
+                  </span>
+                </div>
+                <p className="text-sm text-on-surface/70 mb-6 leading-relaxed">
+                  Connects New Port with Old Port and is the easiest way into the pedestrian waterfront.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <h6 className="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface/50 mb-3">Logistics</h6>
+                    <div className="space-y-2 text-sm font-sans text-on-surface/80">
+                      <div className="flex gap-2"><Clock className="w-4 h-4 shrink-0 text-cyan-600" /> <strong>Duration:</strong> 8-15 mins</div>
+                      <div className="flex gap-2"><MapPin className="w-4 h-4 shrink-0 text-cyan-600" /> <strong>Frequency:</strong> Every 30 mins</div>
+                      <div className="flex gap-2"><CheckCircle2 className="w-4 h-4 shrink-0 text-cyan-600" /> <strong>Hours:</strong> 08:30 to 23:30</div>
+                    </div>
+                  </div>
+                  <div>
+                    <h6 className="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface/50 mb-3">Why Use It</h6>
+                    <div className="space-y-2 text-sm font-sans text-on-surface/80">
+                      {["Direct Town Access", "Handles luggage and strollers", "Wheelchair Friendly", "Great Views"].map((item) => (
+                        <div key={item} className="flex gap-2">
+                          <CheckCircle2 className="w-4 h-4 shrink-0 text-cyan-600" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <button
+                  onClick={() => window.open("https://mykonos-seabus.gr/", "_blank")}
+                  className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary border-b border-primary/20 pb-1 hover:border-primary transition-all inline-block"
+                >
+                  Schedule
+                </button>
+              </motion.div>
+
+              <motion.div className="p-8 bg-surface-container-lowest rounded-3xl border border-outline-variant/20 shadow-sm" {...fadeIn}>
+                <div className="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center mb-4">
+                  <Bus className="w-5 h-5 text-teal-600" />
+                </div>
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <h5 className="font-serif text-2xl">Public Buses (KTEL)</h5>
+                  <span className="bg-teal-100 text-teal-700 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-teal-200">
+                    EUR 1.50 - EUR 2.50
+                  </span>
+                </div>
+                <p className="text-sm text-on-surface/70 mb-6 leading-relaxed">
+                  Modern buses with A/C and much lower cost than private cars for beach and village routes.
+                </p>
+                <div className="space-y-5 mb-6">
+                  <div className="bg-surface border border-outline-variant/20 p-5 rounded-2xl">
+                    <h6 className="text-sm font-bold text-on-surface mb-2">Fabrika Bus Station (South)</h6>
+                    <p className="text-xs text-on-surface/70 mb-3">Direct lines for Paradise, Super Paradise, Platis Gialos, Psarou, Ornos, and Paraga.</p>
+                    <div className="flex flex-wrap gap-2">
+                      {["Paradise", "Super Paradise", "Platis Gialos", "Psarou", "Ornos", "Paraga"].map((stop) => (
+                        <span key={stop} className="bg-teal-50 text-teal-800 text-xs px-2 py-1 rounded border border-teal-100/50">{stop}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="bg-amber-50 border border-amber-200 p-5 rounded-2xl">
+                    <div className="flex items-start gap-3">
+                      <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                      <div>
+                        <h6 className="text-sm font-bold text-amber-900 mb-1">Old Port Bus Station</h6>
+                        <p className="text-xs text-amber-800 leading-relaxed">
+                          For Ano Mera, Elia Beach, or Kalafatis, use the Old Port Bus Station near the SeaBus stop, not Fabrika.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <button
                   onClick={() => window.open("https://mykonosbus.com/language/el/dromologia/", "_blank")}
                   className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary border-b border-primary/20 pb-1 hover:border-primary transition-all inline-block"
                 >
                   Timetable
                 </button>
-              </motion.div>
-              <motion.div className="p-8 bg-surface-container-lowest rounded-3xl" {...fadeIn}>
-                <div className="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center mb-4">
-                  <Ship className="w-5 h-5 text-primary" />
-                </div>
-                <h5 className="font-serif text-xl mb-2">SeaBus</h5>
-                <p className="text-sm text-on-surface/50 mb-6 leading-relaxed">Port to Old Town center connection every 30 mins.</p>
-                <div className="flex justify-between items-end">
-                  <span className="text-2xl font-serif">EUR 2.50</span>
-                  <button
-                    onClick={() => window.open("https://mykonos-seabus.gr/", "_blank")}
-                    className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary border-b border-primary/20 pb-1 hover:border-primary transition-all"
-                  >
-                    Schedule
-                  </button>
-                </div>
               </motion.div>
             </div>
           </div>
