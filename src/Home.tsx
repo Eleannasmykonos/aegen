@@ -1,31 +1,27 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Link } from "react-router-dom";
-import { 
-  Menu, 
-  ConciergeBell, 
-  ChevronDown, 
-  Utensils, 
-  Car, 
-  Palmtree, 
-  GlassWater, 
-  Info, 
-  MapPin, 
-  MessageCircle, 
-  Wifi, 
-  Key, 
+import { useEffect, useState } from "react";
+import { motion } from "motion/react";
+import {
   AlertCircle,
-  Phone,
+  Car,
+  CheckCircle2,
+  ChevronDown,
+  Clock,
+  Compass,
   Copy,
   ExternalLink,
+  GlassWater,
+  Home,
+  Info,
+  Key,
+  MapPin,
+  MessageCircle,
   Navigation,
-  Compass,
-  Zap,
+  Palmtree,
+  Phone,
   Ship,
-  X,
-  Calendar,
-  Clock,
-  User
+  Utensils,
+  Wifi,
+  Zap
 } from "lucide-react";
 
 const fadeIn = {
@@ -35,14 +31,26 @@ const fadeIn = {
   transition: { duration: 0.8, ease: "easeOut" }
 } as const;
 
-export default function Home() {
-  const [activeSection, setActiveSection] = useState("restaurants");
+const wifiNetworks = [
+  { rooms: "1, 2, 3, 5", network: "Eleannas1", pass: "eleannas1" },
+  { rooms: "4, 12", network: "Eleannas Seaview", pass: "Seaview25" },
+  { rooms: "6 & 7", network: "Eleannas Deluxe", pass: "eleannas4" },
+  { rooms: "8, 9, 10", network: "Eleannas Studios", pass: "litous05" },
+  { rooms: "11", network: "Eleannas Home", pass: "eleannas3" },
+  { rooms: "14, 16", network: "Vastaous", pass: "sunset2021" },
+  { rooms: "15", network: "Dinhouse", pass: "dinhouse1" },
+  { rooms: "17, 18", network: "Eleannas View", pass: "eleannas5" }
+];
+
+export default function HomePage() {
+  const [activeSection, setActiveSection] = useState("hotel");
   const [selectedDiningCategory, setSelectedDiningCategory] = useState("All");
+  const [copiedWifi, setCopiedWifi] = useState<string | null>(null);
 
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -70% 0px", // Adjust to trigger when section is roughly in the upper middle
+      rootMargin: "-20% 0px -70% 0px",
       threshold: 0
     };
 
@@ -55,8 +63,8 @@ export default function Home() {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = ["restaurants", "transfers", "beaches", "bars", "info"];
-    
+    const sections = ["hotel", "transfers", "restaurants", "beaches", "bars"];
+
     sections.forEach((id) => {
       const element = document.getElementById(id);
       if (element) observer.observe(element);
@@ -65,21 +73,26 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  const handleCopy = async (text: string) => {
+    await navigator.clipboard.writeText(text);
+    setCopiedWifi(text);
+    window.setTimeout(() => setCopiedWifi(null), 2000);
+  };
+
   return (
     <div className="min-h-screen flex flex-col pt-16">
-      {/* Hero Section */}
       <section className="relative h-screen w-full flex flex-col items-center justify-center text-center px-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            className="w-full h-full object-cover" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYLlByzNzM8UpjXYZ9JPBGo739mTVdG6ouoR8eirPnqH13Q1J1uDTrgjYR00V6sl4RHtS5SVsYIIlANqSNDmR4bvANhHM1CZB4eqzN9IvThMhxzmo4dQmmPLyrNyryQShMg4NysOMiWcOHw-_irxYUBSCnwZcTN92bZtm04cXry6NXn-P2EWALmRGRXuVWyH_79vZvR3QSFqtNnJQDx213tWy9IPcfUihCJaBpi59XDOUsqpgdF4d1QnQPuwrNhT-w0hDGT8kpa1A" 
+          <img
+            className="w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYLlByzNzM8UpjXYZ9JPBGo739mTVdG6ouoR8eirPnqH13Q1J1uDTrgjYR00V6sl4RHtS5SVsYIIlANqSNDmR4bvANhHM1CZB4eqzN9IvThMhxzmo4dQmmPLyrNyryQShMg4NysOMiWcOHw-_irxYUBSCnwZcTN92bZtm04cXry6NXn-P2EWALmRGRXuVWyH_79vZvR3QSFqtNnJQDx213tWy9IPcfUihCJaBpi59XDOUsqpgdF4d1QnQPuwrNhT-w0hDGT8kpa1A"
             alt="Mykonos View"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-black/30"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-surface"></div>
+          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-surface" />
         </div>
-        <motion.div 
+        <motion.div
           className="relative z-10 max-w-3xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -91,12 +104,12 @@ export default function Home() {
           <p className="font-sans text-white/95 text-sm md:text-base tracking-[0.2em] mb-12 uppercase font-medium drop-shadow-md">
             Everything you need for a seamless and unforgettable stay
           </p>
-          <motion.a 
-            href="#quick-access" 
+          <motion.a
+            href="#quick-access"
             className="inline-flex flex-col items-center gap-4 text-white font-sans uppercase tracking-[0.4em] text-xs hover:opacity-70 transition-opacity"
             whileHover={{ y: 5 }}
           >
-            Explore Guide 
+            Explore Guide
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -107,35 +120,39 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Sticky Navigation */}
       <nav className="sticky top-[68px] z-40 bg-surface-container-lowest/80 backdrop-blur-lg flex overflow-x-auto gap-8 px-8 py-5 no-scrollbar whitespace-nowrap border-b border-outline-variant/10">
-        {["Restaurants", "Transfers", "Beaches", "Bars", "Info"].map((item) => {
-          const id = item.toLowerCase();
-          const isActive = activeSection === id;
+        {[
+          { label: "Hotel Info", id: "hotel" },
+          { label: "Transfers", id: "transfers" },
+          { label: "Restaurants", id: "restaurants" },
+          { label: "Beaches", id: "beaches" },
+          { label: "Bars", id: "bars" }
+        ].map((item) => {
+          const isActive = activeSection === item.id;
           return (
-            <a 
-              key={item}
-              href={`#${id}`}
-              className={`font-serif text-sm tracking-widest transition-all ${isActive ? 'text-primary italic underline underline-offset-8' : 'text-on-surface hover:pl-2'}`}
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className={`font-serif text-sm tracking-widest transition-all ${isActive ? "text-primary italic underline underline-offset-8" : "text-on-surface hover:pl-2"}`}
             >
-              {item}
+              {item.label}
             </a>
           );
         })}
       </nav>
 
       <main className="pb-32">
-        {/* Quick Access Bento */}
         <section className="px-6 py-12 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto" id="quick-access">
           {[
-            { icon: Utensils, label: "Restaurants", id: "restaurants" },
+            { icon: Wifi, label: "Wifi", id: "hotel" },
+            { icon: Info, label: "Hotel Info", id: "hotel" },
             { icon: Car, label: "Transfers", id: "transfers" },
+            { icon: Utensils, label: "Restaurants", id: "restaurants" },
             { icon: Palmtree, label: "Beaches", id: "beaches" },
-            { icon: GlassWater, label: "Bars", id: "bars" },
-            { icon: Info, label: "Info", id: "info" }
+            { icon: GlassWater, label: "Bars", id: "bars" }
           ].map((item) => (
             <motion.a
-              key={item.label}
+              key={`${item.label}-${item.id}`}
               href={`#${item.id}`}
               className="p-8 bg-surface-container-lowest rounded-2xl flex flex-col items-center justify-center text-center gap-4 transition-all hover:scale-[1.02] hover:shadow-lg group"
               whileHover={{ y: -5 }}
@@ -148,7 +165,196 @@ export default function Home() {
           ))}
         </section>
 
-        {/* Dining Section */}
+        <section className="py-20 bg-surface-container-low" id="hotel">
+          <div className="px-6 mb-12 max-w-5xl mx-auto">
+            <motion.div {...fadeIn}>
+              <h3 className="text-4xl font-serif italic mb-4">Hotel Info</h3>
+              <p className="font-sans text-on-surface/60 text-sm max-w-2xl leading-relaxed">
+                Your stay essentials live here first, from Wi-Fi and housekeeping to the fastest way to reach us.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="px-6 max-w-5xl mx-auto space-y-8">
+            <motion.div
+              {...fadeIn}
+              className="bg-surface-container-lowest rounded-[2rem] p-8 shadow-sm border border-outline-variant/10"
+            >
+              <div className="flex items-start gap-4 mb-8">
+                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
+                  <Wifi className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary mb-2">Wifi First</p>
+                  <h4 className="text-3xl font-serif mb-2">Get Connected</h4>
+                  <p className="text-sm text-on-surface/60 font-sans">
+                    Find your room number below and tap the password icon to copy it.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {wifiNetworks.map((net) => (
+                  <div key={net.rooms} className="p-4 border border-outline-variant/20 rounded-2xl bg-surface">
+                    <p className="text-[10px] uppercase tracking-widest text-primary font-bold mb-3">Room {net.rooms}</p>
+                    <div className="flex justify-between items-center mb-2 gap-4">
+                      <span className="text-xs font-medium text-on-surface/60">Network</span>
+                      <span className="text-sm font-bold text-right">{net.network}</span>
+                    </div>
+                    <div className="flex justify-between items-center gap-4">
+                      <span className="text-xs font-medium text-on-surface/60">Password</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-mono bg-on-surface/5 px-2 py-0.5 rounded">{net.pass}</span>
+                        <button
+                          onClick={() => void handleCopy(net.pass)}
+                          className="p-1.5 hover:bg-on-surface/10 rounded-md transition-colors"
+                          title="Copy Password"
+                        >
+                          {copiedWifi === net.pass ? (
+                            <CheckCircle2 className="w-4 h-4 text-green-500" />
+                          ) : (
+                            <Copy className="w-4 h-4 text-on-surface/40" />
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6">
+              <motion.div
+                {...fadeIn}
+                className="bg-surface-container-lowest rounded-[2rem] p-8 shadow-sm border border-outline-variant/10"
+              >
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
+                    <Home className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-serif mb-2">Stay Essentials</h4>
+                    <p className="text-sm text-on-surface/60 font-sans">
+                      The key details guests ask for most often, all on the landing page.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    { icon: Key, label: "Check-In / Out", value: "3:00 PM / 11:00 AM" },
+                    { icon: Clock, label: "Housekeeping", value: "Daily from 11:00 AM to 3:00 PM" },
+                    { icon: Phone, label: "Concierge", value: "+30 697 724 6788" },
+                    { icon: AlertCircle, label: "Emergency", value: "112 / 166 / Police 100" }
+                  ].map((item) => (
+                    <div key={item.label} className="p-5 rounded-2xl bg-surface border border-outline-variant/10">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                          <item.icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface/50">{item.label}</p>
+                      </div>
+                      <p className="text-sm font-medium leading-relaxed">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                {...fadeIn}
+                className="bg-surface-container-lowest rounded-[2rem] p-8 shadow-sm border border-outline-variant/10 flex flex-col justify-between"
+              >
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary mb-3">Need Something?</p>
+                  <h4 className="text-2xl font-serif mb-3">Message the hotel team</h4>
+                  <p className="text-sm text-on-surface/60 font-sans leading-relaxed mb-6">
+                    Housekeeping preferences, storage questions, or arrival help can all be handled directly on WhatsApp.
+                  </p>
+                </div>
+                <button
+                  onClick={() => window.open("https://wa.me/306977246788", "_blank")}
+                  className="w-full bg-[#25D366] text-white px-6 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform shadow-lg shadow-[#25D366]/20"
+                >
+                  <MessageCircle className="w-5 h-5" /> Contact Concierge
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-24 bg-surface-container-low" id="transfers">
+          <div className="px-6 mb-16 max-w-5xl mx-auto">
+            <motion.div {...fadeIn}>
+              <h3 className="text-4xl font-serif italic mb-4">Transfers</h3>
+              <p className="font-sans text-on-surface/60 text-sm max-w-md">
+                Seamless movement across the island, from private cars to the SeaBus.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="px-6 space-y-8 max-w-5xl mx-auto">
+            <motion.div
+              className="p-10 bg-surface-container-lowest rounded-[3rem] shadow-sm relative overflow-hidden group"
+              {...fadeIn}
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-20 -mt-20 transition-transform group-hover:scale-110" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                  <Zap className="w-6 h-6 text-primary" />
+                </div>
+                <h4 className="text-3xl font-serif mb-3">Private Chauffeur</h4>
+                <p className="text-base text-on-surface/60 mb-10 max-w-sm leading-relaxed">
+                  Fast, reliable, and premium service across Mykonos. Professional English-speaking drivers.
+                </p>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                  <div className="flex flex-col">
+                    <span className="text-[10px] uppercase tracking-widest text-on-surface/40 font-bold mb-1">Starting from</span>
+                    <span className="text-3xl font-serif">EUR 30 - EUR 40</span>
+                  </div>
+                  <button
+                    onClick={() => window.open("https://wa.me/306977246788?text=Hello%2C%20I%20would%20like%20to%20book%20a%20private%20chauffeur", "_blank")}
+                    className="w-full sm:w-auto bg-[#25D366] text-white px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:scale-105 transition-transform shadow-lg shadow-[#25D366]/20"
+                  >
+                    <MessageCircle className="w-5 h-5" /> WhatsApp Concierge
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <motion.div className="p-8 bg-surface-container-lowest rounded-3xl" {...fadeIn}>
+                <div className="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center mb-4">
+                  <Navigation className="w-5 h-5 text-primary" />
+                </div>
+                <h5 className="font-serif text-xl mb-2">Island Bus</h5>
+                <p className="text-sm text-on-surface/50 mb-6 leading-relaxed">Multiple routes to all major beaches and villages.</p>
+                <button
+                  onClick={() => window.open("https://mykonosbus.com/language/el/dromologia/", "_blank")}
+                  className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary border-b border-primary/20 pb-1 hover:border-primary transition-all inline-block"
+                >
+                  Timetable
+                </button>
+              </motion.div>
+              <motion.div className="p-8 bg-surface-container-lowest rounded-3xl" {...fadeIn}>
+                <div className="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center mb-4">
+                  <Ship className="w-5 h-5 text-primary" />
+                </div>
+                <h5 className="font-serif text-xl mb-2">SeaBus</h5>
+                <p className="text-sm text-on-surface/50 mb-6 leading-relaxed">Port to Old Town center connection every 30 mins.</p>
+                <div className="flex justify-between items-end">
+                  <span className="text-2xl font-serif">EUR 2.50</span>
+                  <button
+                    onClick={() => window.open("https://mykonos-seabus.gr/", "_blank")}
+                    className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary border-b border-primary/20 pb-1 hover:border-primary transition-all"
+                  >
+                    Schedule
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-20" id="restaurants">
           <div className="px-6 mb-12 max-w-5xl mx-auto">
             <motion.div {...fadeIn}>
@@ -161,10 +367,10 @@ export default function Home() {
 
           <div className="flex overflow-x-auto gap-3 px-6 mb-10 no-scrollbar max-w-5xl mx-auto">
             {["All", "High-End", "Traditional", "International", "Quick Bites"].map((cat) => (
-              <button 
+              <button
                 key={cat}
                 onClick={() => setSelectedDiningCategory(cat)}
-                className={`px-8 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest whitespace-nowrap transition-all cursor-pointer ${selectedDiningCategory === cat ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-105' : 'bg-surface-container-high text-on-surface/60 hover:bg-surface-container-low'}`}
+                className={`px-8 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest whitespace-nowrap transition-all cursor-pointer ${selectedDiningCategory === cat ? "bg-primary text-white shadow-lg shadow-primary/20 scale-105" : "bg-surface-container-high text-on-surface/60 hover:bg-surface-container-low"}`}
               >
                 {cat}
               </button>
@@ -197,53 +403,55 @@ export default function Home() {
                 desc: "The best traditional gyros and souvlaki in Chora, perfect for a fast island meal.",
                 img: "https://picsum.photos/seed/souvlaki/800/600"
               }
-            ].filter(rest => selectedDiningCategory === "All" || rest.tag === selectedDiningCategory).map((rest) => (
-              <motion.div 
-                key={rest.name}
-                className="group bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
-                {...fadeIn}
-              >
-                <div className="relative h-72 overflow-hidden">
-                  <img 
-                    src={rest.img} 
-                    alt={rest.name} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-6 right-6">
-                    <span className="bg-white/90 backdrop-blur-md text-primary px-4 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-sm">
-                      {rest.tag}
-                    </span>
+            ]
+              .filter((rest) => selectedDiningCategory === "All" || rest.tag === selectedDiningCategory)
+              .map((rest) => (
+                <motion.div
+                  key={rest.name}
+                  className="group bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
+                  {...fadeIn}
+                >
+                  <div className="relative h-72 overflow-hidden">
+                    <img
+                      src={rest.img}
+                      alt={rest.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-6 right-6">
+                      <span className="bg-white/90 backdrop-blur-md text-primary px-4 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-sm">
+                        {rest.tag}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="p-8">
-                  <h4 className="text-2xl font-serif mb-3">{rest.name}</h4>
-                  <p className="text-sm text-on-surface/60 font-sans mb-8 leading-relaxed">{rest.desc}</p>
-                  <div className="flex gap-4">
-                    <button 
-                      onClick={() => window.open("https://m-eating.gr", "_blank")}
-                      className="flex-1 py-4 text-[10px] font-bold uppercase tracking-[0.2em] bg-primary text-white rounded-2xl hover:bg-primary-container transition-colors"
-                    >
-                      Visit Website
-                    </button>
-                    <button 
-                      onClick={() => window.open("https://google.com/maps", "_blank")}
-                      className="px-5 border border-outline-variant/20 rounded-2xl hover:bg-surface-container-low transition-colors"
-                    >
-                      <MapPin className="w-5 h-5 text-primary" />
-                    </button>
+                  <div className="p-8">
+                    <h4 className="text-2xl font-serif mb-3">{rest.name}</h4>
+                    <p className="text-sm text-on-surface/60 font-sans mb-8 leading-relaxed">{rest.desc}</p>
+                    <div className="flex gap-4">
+                      <button
+                        onClick={() => window.open("https://m-eating.gr", "_blank")}
+                        className="flex-1 py-4 text-[10px] font-bold uppercase tracking-[0.2em] bg-primary text-white rounded-2xl hover:bg-primary-container transition-colors"
+                      >
+                        Visit Website
+                      </button>
+                      <button
+                        onClick={() => window.open("https://google.com/maps", "_blank")}
+                        className="px-5 border border-outline-variant/20 rounded-2xl hover:bg-surface-container-low transition-colors"
+                      >
+                        <MapPin className="w-5 h-5 text-primary" />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
           </div>
 
           <div className="px-6 mt-12 flex overflow-x-auto gap-6 no-scrollbar max-w-5xl mx-auto">
-            {["Nōema", "To Maereio", "Bakalo", "Lalala"].map((other) => (
+            {["Noema", "To Maereio", "Bakalo", "Lalala"].map((other) => (
               <div key={other} className="min-w-[240px] p-6 bg-surface-container-lowest rounded-2xl border border-outline-variant/5">
                 <h5 className="font-serif text-lg mb-2">{other}</h5>
-                <p className="text-[11px] text-on-surface/50 mb-4">Authentic Cycladic flavors & atmosphere</p>
-                <button 
+                <p className="text-[11px] text-on-surface/50 mb-4">Authentic Cycladic flavors and atmosphere</p>
+                <button
                   onClick={() => window.open(`https://wa.me/306977246788?text=I'm interested in exploring restaurants like ${other}`, "_blank")}
                   className="text-[10px] font-bold text-primary uppercase tracking-widest border-b border-primary/30 pb-1 cursor-pointer hover:border-primary transition-all"
                 >
@@ -254,87 +462,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Transfers Section */}
-        <section className="py-24 bg-surface-container-low" id="transfers">
-          <div className="px-6 mb-16 max-w-5xl mx-auto">
-            <motion.div {...fadeIn}>
-              <h3 className="text-4xl font-serif italic mb-4">Transfers</h3>
-              <p className="font-sans text-on-surface/60 text-sm max-w-md">
-                Seamless movement across the island, from private cars to the SeaBus.
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="px-6 space-y-8 max-w-5xl mx-auto">
-            <motion.div 
-              className="p-10 bg-surface-container-lowest rounded-[3rem] shadow-sm relative overflow-hidden group"
-              {...fadeIn}
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-20 -mt-20 transition-transform group-hover:scale-110" />
-              <div className="relative z-10">
-                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                  <Zap className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="text-3xl font-serif mb-3">Private Chauffeur</h4>
-                <p className="text-base text-on-surface/60 mb-10 max-w-sm leading-relaxed">
-                  Fast, reliable, and premium service across Mykonos. Professional English-speaking drivers.
-                </p>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                  <div className="flex flex-col">
-                    <span className="text-[10px] uppercase tracking-widest text-on-surface/40 font-bold mb-1">Starting from</span>
-                    <span className="text-3xl font-serif">€30 - €40</span>
-                  </div>
-                  <button 
-                    onClick={() => window.open("https://wa.me/306977246788?text=Hello%2C%20I%20would%20like%20to%20book%20a%20private%20chauffeur", "_blank")}
-                    className="w-full sm:w-auto bg-[#25D366] text-white px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:scale-105 transition-transform shadow-lg shadow-[#25D366]/20"
-                  >
-                    <MessageCircle className="w-5 h-5" /> WhatsApp Concierge
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <motion.div 
-                className="p-8 bg-surface-container-lowest rounded-3xl"
-                {...fadeIn}
-              >
-                <div className="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center mb-4">
-                  <Navigation className="w-5 h-5 text-primary" />
-                </div>
-                <h5 className="font-serif text-xl mb-2">Island Bus</h5>
-                <p className="text-sm text-on-surface/50 mb-6 leading-relaxed">Multiple routes to all major beaches and villages.</p>
-                <button 
-                  onClick={() => window.open("https://mykonosbus.com/language/el/dromologia/", "_blank")}
-                  className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary border-b border-primary/20 pb-1 hover:border-primary transition-all inline-block"
-                >
-                  Timetable
-                </button>
-              </motion.div>
-              <motion.div 
-                className="p-8 bg-surface-container-lowest rounded-3xl"
-                {...fadeIn}
-              >
-                <div className="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center mb-4">
-                  <Ship className="w-5 h-5 text-primary" />
-                </div>
-                <h5 className="font-serif text-xl mb-2">SeaBus</h5>
-                <p className="text-sm text-on-surface/50 mb-6 leading-relaxed">Port to Old Town center connection every 30 mins.</p>
-                <div className="flex justify-between items-end">
-                  <span className="text-2xl font-serif">€2.50</span>
-                  <button 
-                    onClick={() => window.open("https://mykonos-seabus.gr/", "_blank")}
-                    className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary border-b border-primary/20 pb-1 hover:border-primary transition-all"
-                  >
-                    Schedule
-                  </button>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Explore Section */}
         <section className="py-24" id="beaches">
           <div className="px-6 mb-16 max-w-5xl mx-auto flex justify-between items-end">
             <motion.div {...fadeIn}>
@@ -345,15 +472,11 @@ export default function Home() {
           </div>
 
           <div className="px-6 space-y-24 max-w-5xl mx-auto">
-            {/* Beach Card */}
             <div className="flex flex-col md:flex-row gap-12 items-center">
-              <motion.div 
-                className="w-full md:w-1/2 aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl"
-                {...fadeIn}
-              >
-                <img 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk0KjNWMchFv7ROAzXHddySm1AXRr42y49YpxFMF601xdJq7cSvnN47FT9WEFBE2rElUnz9ig5XSBDwKXENSsIK0GEjX5sd0rcubVTivx9AiTM4PdLExCfVrrar_HpiOodRckol0qW2dAQwuT8QINy4OXgYkZwWJ4cvDgldnpz5is0P9mfevzEM2IK7uJObHNDHe7_7GAPx4KxEJezWVmj6I9S3h_9N9xKBDrCrnj_EOLsqOwAEFHF7h4H_7htBRAI2Nbm9rcASZM" 
-                  alt="Psarou Beach" 
+              <motion.div className="w-full md:w-1/2 aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl" {...fadeIn}>
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk0KjNWMchFv7ROAzXHddySm1AXRr42y49YpxFMF601xdJq7cSvnN47FT9WEFBE2rElUnz9ig5XSBDwKXENSsIK0GEjX5sd0rcubVTivx9AiTM4PdLExCfVrrar_HpiOodRckol0qW2dAQwuT8QINy4OXgYkZwWJ4cvDgldnpz5is0P9mfevzEM2IK7uJObHNDHe7_7GAPx4KxEJezWVmj6I9S3h_9N9xKBDrCrnj_EOLsqOwAEFHF7h4H_7htBRAI2Nbm9rcASZM"
+                  alt="Psarou Beach"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -364,7 +487,7 @@ export default function Home() {
                 <p className="text-base text-on-surface/60 font-sans leading-relaxed mb-10">
                   The ultimate cosmopolitan beach experience. Home to Nammos and crystal clear waters favored by the world's elite. Perfect for those seeking luxury and vibrant energy.
                 </p>
-                <button 
+                <button
                   onClick={() => window.open("https://google.com/maps", "_blank")}
                   className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] border-b-2 border-primary pb-2 hover:gap-5 transition-all"
                 >
@@ -373,7 +496,6 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Landmark Card */}
             <div className="flex flex-col-reverse md:flex-row gap-12 items-center">
               <motion.div className="md:w-1/2" {...fadeIn}>
                 <span className="font-sans text-[10px] uppercase tracking-[0.5em] text-primary font-bold mb-6 block">Landmarks</span>
@@ -381,20 +503,17 @@ export default function Home() {
                 <p className="text-base text-on-surface/60 font-sans leading-relaxed mb-10">
                   The most romantic spot on the island. Historic houses built on the edge of the sea, perfect for sunset cocktails and capturing the iconic Mykonos skyline.
                 </p>
-                <button 
+                <button
                   onClick={() => window.open("https://wa.me/306977246788?text=I'd%20like%20to%20know%20more%20about%20your%20Little%20Venice%20tours", "_blank")}
                   className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] border-b-2 border-primary pb-2 hover:gap-5 transition-all"
                 >
                   Explore Tours <ExternalLink className="w-4 h-4" />
                 </button>
               </motion.div>
-              <motion.div 
-                className="w-full md:w-1/2 aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl"
-                {...fadeIn}
-              >
-                <img 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwOfPLno7-lLg1PAdkR59pU6ygKwZ09rEFmJqGmBvg-alurLnSf1tgPu6plbRqyS1ukOE3kXZRvpGs8tioXS7kR_Bq8Gj9_-nMIMLgFAASlw6lx7qNxNZOAXRTq5uTnGrzDVh8Fa94l8JPyEy42WT3kPTF5L5BXw6yFfk2th1GA21IAuZueX--RA33PVBkqFSoqmFtjY95jkURLfg3mzLoddDuJAR6DLv-pa-uRnpNxDPT0lxachpXfVVEM-cgTMBnSygeAvg4l9A" 
-                  alt="Little Venice" 
+              <motion.div className="w-full md:w-1/2 aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl" {...fadeIn}>
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwOfPLno7-lLg1PAdkR59pU6ygKwZ09rEFmJqGmBvg-alurLnSf1tgPu6plbRqyS1ukOE3kXZRvpGs8tioXS7kR_Bq8Gj9_-nMIMLgFAASlw6lx7qNxNZOAXRTq5uTnGrzDVh8Fa94l8JPyEy42WT3kPTF5L5BXw6yFfk2th1GA21IAuZueX--RA33PVBkqFSoqmFtjY95jkURLfg3mzLoddDuJAR6DLv-pa-uRnpNxDPT0lxachpXfVVEM-cgTMBnSygeAvg4l9A"
+                  alt="Little Venice"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -403,7 +522,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Nightlife Section */}
         <section className="py-24 bg-on-surface text-surface" id="bars">
           <div className="px-6 mb-16 max-w-5xl mx-auto">
             <motion.div {...fadeIn}>
@@ -417,7 +535,7 @@ export default function Home() {
           <div className="px-6 flex overflow-x-auto gap-8 no-scrollbar max-w-5xl mx-auto">
             {[
               {
-                name: "180º Sunset Bar",
+                name: "180 Sunset Bar",
                 desc: "Breathtaking panoramic views of the town and harbor. Sophisticated beats and signature cocktails."
               },
               {
@@ -429,57 +547,19 @@ export default function Home() {
                 desc: "The legendary heart of Mykonos nightlife. Where fashion and music converge."
               }
             ].map((bar) => (
-              <motion.div 
+              <motion.div
                 key={bar.name}
                 className="min-w-[320px] bg-stone-900/50 backdrop-blur-sm border border-stone-800 rounded-[2.5rem] p-10 flex flex-col"
                 whileHover={{ y: -10 }}
               >
                 <h5 className="text-2xl font-serif mb-4 text-white">{bar.name}</h5>
                 <p className="text-sm text-stone-400 mb-10 flex-1 leading-relaxed">{bar.desc}</p>
-                <button 
+                <button
                   onClick={() => window.open(`https://wa.me/306977246788?text=I'd%20like%20to%20book%20a%20table%20at%20${bar.name}`, "_blank")}
                   className="w-full py-4 border border-primary-container text-primary-container text-[10px] font-bold uppercase tracking-[0.3em] rounded-2xl hover:bg-primary-container hover:text-on-surface transition-all"
                 >
                   Book a Table
                 </button>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-
-        {/* Essential Info */}
-        <section className="py-24" id="info">
-          <div className="px-6 mb-16 max-w-5xl mx-auto">
-            <motion.div {...fadeIn}>
-              <h3 className="text-4xl font-serif italic mb-4">Essential Info</h3>
-              <p className="font-sans text-on-surface/60 text-sm">Practical details for a worry-free stay.</p>
-            </motion.div>
-          </div>
-
-          <div className="px-6 grid grid-cols-1 gap-6 max-w-3xl mx-auto">
-            {[
-              { icon: Key, label: "Check-In / Out", value: "3:00 PM / 11:00 AM" },
-              { icon: Wifi, label: "Hotel WiFi", value: "AEGEAN_PREMIUM_2024", action: Copy },
-              { icon: AlertCircle, label: "Emergency", value: "Dial 100 or Concierge at 200", action: Phone, color: "text-red-500" }
-            ].map((item) => (
-              <motion.div 
-                key={item.label}
-                className="p-8 bg-surface-container-high rounded-3xl flex items-center justify-between group hover:bg-surface-container-low transition-colors"
-                {...fadeIn}
-              >
-                <div className="flex items-center gap-6">
-                  <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
-                    <item.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-[10px] uppercase tracking-[0.2em] text-on-surface/40 mb-1">{item.label}</p>
-                    <p className="text-base font-medium">{item.value}</p>
-                  </div>
-                </div>
-                {item.action && (
-                  <item.action className={`w-5 h-5 cursor-pointer opacity-40 group-hover:opacity-100 transition-opacity ${item.color || 'text-on-surface'}`} />
-                )}
               </motion.div>
             ))}
           </div>

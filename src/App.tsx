@@ -7,7 +7,6 @@ import {
   Utensils, 
   Car, 
   Info, 
-  MapPin, 
   MessageCircle, 
   X,
   Calendar,
@@ -30,10 +29,8 @@ export default function App() {
 
   const navLinks = [
     { label: "Home", path: "/" },
-    { label: "Hotel Info", path: "/hotel-info" },
     { label: "Dining & Drinking", path: "/dining" },
     { label: "Beaches & Clubs", path: "/beaches" },
-    { label: "Transfers & Laundry", path: "/transfers" },
     { label: "Excursions", path: "/excursions" }
   ];
 
@@ -200,12 +197,12 @@ export default function App() {
       <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-evenly items-center pt-4 pb-10 px-4 bg-white/95 backdrop-blur-2xl rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] border-t border-outline-variant/10">
         {[
           { icon: HomeIcon, label: "Home", path: "/" },
-          { icon: Info, label: "Hotel", path: "/hotel-info" },
           { icon: Utensils, label: "Dining", path: "/dining" },
           { icon: Compass, label: "Explore", path: "/beaches" },
-          { icon: Car, label: "Services", path: "/transfers" }
+          { icon: Compass, label: "Tours", path: "/excursions" },
+          { icon: Car, label: "Transfers", path: "/transfers" }
         ].map((item) => {
-          const isActive = location.pathname === item.path || (item.path === '/beaches' && location.pathname === '/excursions');
+          const isActive = location.pathname === item.path;
           return (
             <Link 
               key={item.label}
