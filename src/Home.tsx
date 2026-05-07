@@ -87,9 +87,8 @@ export default function HomePage() {
         <div className="absolute inset-0 z-0">
           <img
             className="w-full h-full object-cover"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYLlByzNzM8UpjXYZ9JPBGo739mTVdG6ouoR8eirPnqH13Q1J1uDTrgjYR00V6sl4RHtS5SVsYIIlANqSNDmR4bvANhHM1CZB4eqzN9IvThMhxzmo4dQmmPLyrNyryQShMg4NysOMiWcOHw-_irxYUBSCnwZcTN92bZtm04cXry6NXn-P2EWALmRGRXuVWyH_79vZvR3QSFqtNnJQDx213tWy9IPcfUihCJaBpi59XDOUsqpgdF4d1QnQPuwrNhT-w0hDGT8kpa1A"
+            src="/images/hero.jpg"
             alt="Mykonos View"
-            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-black/30" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-surface" />
@@ -246,7 +245,7 @@ export default function HomePage() {
                   {[
                     { icon: Key, label: "Check-In / Out", value: "3:00 PM / 11:00 AM" },
                     { icon: Clock, label: "Housekeeping", value: "Daily from 11:00 AM to 3:00 PM" },
-                    { icon: Phone, label: "Concierge", value: "+30 697 724 6788" },
+                    { icon: Phone, label: "Concierge", value: "+306934596482" },
                     { icon: AlertCircle, label: "Emergency", value: "112 / 166 / Police 100" }
                   ].map((item) => (
                     <div key={item.label} className="p-5 rounded-2xl bg-surface border border-outline-variant/10">
@@ -274,7 +273,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <button
-                  onClick={() => window.open("https://wa.me/306977246788", "_blank")}
+                  onClick={() => window.open("https://wa.me/306934596482", "_blank")}
                   className="w-full bg-[#25D366] text-white px-6 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform shadow-lg shadow-[#25D366]/20"
                 >
                   <MessageCircle className="w-5 h-5" /> Contact Concierge
@@ -365,7 +364,7 @@ export default function HomePage() {
                       </div>
                       <div className="flex flex-wrap gap-4 items-center">
                         <button
-                          onClick={() => window.open("https://wa.me/306977246788", "_blank")}
+                          onClick={() => window.open("https://wa.me/306934596482", "_blank")}
                           className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl text-[10px] uppercase font-bold tracking-widest hover:bg-[#20bd5a] transition-colors shadow-md shadow-[#25D366]/20"
                         >
                           <MessageCircle className="w-5 h-5" /> Schedule Pickup
@@ -391,7 +390,7 @@ export default function HomePage() {
                   Storage is available on checkout only when locker space remains. Message your room number and preferred drop-off time first.
                 </p>
                 <button
-                  onClick={() => window.open("https://wa.me/306977246788", "_blank")}
+                  onClick={() => window.open("https://wa.me/306934596482", "_blank")}
                   className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary hover:text-primary-container transition-colors border-b border-primary/20 pb-1"
                 >
                   <MessageCircle className="w-4 h-4" /> Request Storage
@@ -423,7 +422,7 @@ export default function HomePage() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                   <div className="flex flex-col">
                     <span className="text-[10px] uppercase tracking-widest text-on-surface/40 font-bold mb-1">Direct Driver Contact</span>
-                    <span className="text-2xl font-serif">+30 693 459 6482</span>
+                    <span className="text-2xl font-serif">+306934596482</span>
                   </div>
                   <button
                     onClick={() => window.open("https://wa.me/306934596482", "_blank")}
@@ -552,7 +551,7 @@ export default function HomePage() {
                 name: "M-Eating",
                 tag: "High-End",
                 desc: "Innovative Mediterranean flavors in a beautifully restored Mykonian house.",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBNxTmrSrN4Rjo3flkYLjBaNKPBftMLMuBFi8hxiYkxstwe54vn5QjKJZR7qBY_QrXgIhUA91rT8_QKyLPfc435dJpC9kRAAhMWLgnasP68cG_sOyNEbvf_tkogcNI0EQNRBiOYvUjqMEcAEHOxliI_kUyApbXThH3bitWeVskf3MGZPe0p-nNVcAmX3vm483rkD4FoqFdPPo7TPA1EpI8gQw4R8eDmZm97Nqmal-xTqADcRt1Cl7jmiiQ3pBc2kyVIxytb0YbnUJ8"
+                img: "/images/m-eating.jpeg"
               },
               {
                 name: "Zuma",
@@ -570,7 +569,7 @@ export default function HomePage() {
                 name: "Souvlaki Story",
                 tag: "Quick Bites",
                 desc: "The best traditional gyros and souvlaki in Chora, perfect for a fast island meal.",
-                img: "https://picsum.photos/seed/souvlaki/800/600"
+                img: "/images/souvlaki-story.jpeg"
               }
             ]
               .filter((rest) => selectedDiningCategory === "All" || rest.tag === selectedDiningCategory)
@@ -621,7 +620,7 @@ export default function HomePage() {
                 <h5 className="font-serif text-lg mb-2">{other}</h5>
                 <p className="text-[11px] text-on-surface/50 mb-4">Authentic Cycladic flavors and atmosphere</p>
                 <button
-                  onClick={() => window.open(`https://wa.me/306977246788?text=I'm interested in exploring restaurants like ${other}`, "_blank")}
+                  onClick={() => window.open(`https://wa.me/306934596482?text=I'm interested in exploring restaurants like ${other}`, "_blank")}
                   className="text-[10px] font-bold text-primary uppercase tracking-widest border-b border-primary/30 pb-1 cursor-pointer hover:border-primary transition-all"
                 >
                   View More
@@ -673,7 +672,7 @@ export default function HomePage() {
                   The most romantic spot on the island. Historic houses built on the edge of the sea, perfect for sunset cocktails and capturing the iconic Mykonos skyline.
                 </p>
                 <button
-                  onClick={() => window.open("https://wa.me/306977246788?text=I'd%20like%20to%20know%20more%20about%20your%20Little%20Venice%20tours", "_blank")}
+                  onClick={() => window.open("https://wa.me/306934596482?text=I'd%20like%20to%20know%20more%20about%20your%20Little%20Venice%20tours", "_blank")}
                   className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] border-b-2 border-primary pb-2 hover:gap-5 transition-all"
                 >
                   Explore Tours <ExternalLink className="w-4 h-4" />
@@ -724,7 +723,7 @@ export default function HomePage() {
                 <h5 className="text-2xl font-serif mb-4 text-white">{bar.name}</h5>
                 <p className="text-sm text-stone-400 mb-10 flex-1 leading-relaxed">{bar.desc}</p>
                 <button
-                  onClick={() => window.open(`https://wa.me/306977246788?text=I'd%20like%20to%20book%20a%20table%20at%20${bar.name}`, "_blank")}
+                  onClick={() => window.open(`https://wa.me/306934596482?text=I'd%20like%20to%20book%20a%20table%20at%20${bar.name}`, "_blank")}
                   className="w-full py-4 border border-primary-container text-primary-container text-[10px] font-bold uppercase tracking-[0.3em] rounded-2xl hover:bg-primary-container hover:text-on-surface transition-all"
                 >
                   Book a Table

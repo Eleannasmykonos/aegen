@@ -89,8 +89,8 @@ export default function App() {
               </nav>
               <div className="mt-auto pt-12 border-t border-outline-variant/20">
                 <p className="text-[10px] uppercase tracking-[0.3em] text-on-surface/40 mb-4 font-bold">Quick Contact</p>
-                <p className="text-sm font-serif mb-2">Concierge: +30 697 724 6788</p>
-                <p className="text-sm font-serif">Email: stay@theaegean.com</p>
+                <p className="text-sm font-serif mb-2">Concierge: +306934596482</p>
+                <p className="text-sm font-serif">Email: eleannasmykonos@gmail.com</p>
               </div>
             </motion.div>
           </>
@@ -154,7 +154,7 @@ export default function App() {
                 <div className="mt-10 pt-8 border-t border-outline-variant/20">
                   <button 
                     onClick={() => {
-                      window.open("https://wa.me/306977246788", "_blank");
+                      window.open("https://wa.me/306934596482", "_blank");
                       setIsConciergeOpen(false);
                     }}
                     className="w-full bg-primary text-white py-5 rounded-2xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-primary-container transition-colors shadow-lg shadow-primary/20"
@@ -183,7 +183,7 @@ export default function App() {
       {/* Floating Action Button */}
       {location.pathname !== '/' && (
         <motion.button 
-          onClick={() => window.open("https://wa.me/306977246788", "_blank")}
+          onClick={() => window.open("https://wa.me/306934596482", "_blank")}
           className="fixed bottom-32 right-8 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
