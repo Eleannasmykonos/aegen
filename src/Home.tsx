@@ -37,7 +37,7 @@ const wifiNetworks = [
   { rooms: "1, 2, 3, 5", network: "Eleannas1", pass: "eleannas1" },
   { rooms: "4, 12", network: "Eleannas Seaview", pass: "Seaview25" },
   { rooms: "6 & 7", network: "Eleannas Deluxe", pass: "eleannas4" },
-  { rooms: "8, 9, 10", network: "Eleannas Studios", pass: "litous05" },
+  { rooms: "8, 9, 10", network: "Eleannas Studios", pass: "eleannas5" },
   { rooms: "11", network: "Eleannas Home", pass: "eleannas3" },
   { rooms: "14, 16", network: "Vastaous", pass: "sunset2021" },
   { rooms: "15", network: "Dinhouse", pass: "dinhouse1" },
