@@ -242,14 +242,14 @@ export function Dining() {
       name: "Lalala Restaurant",
       category: "Breakfast & Cafe",
       description: "A wonderful spot to start your day with fresh coffee and excellent breakfast.",
-      perk: "10% off when mentioning Eleanna's",
+      perk: "10% off when mentioning Eleanna’s",
       mapsQuery: "Lalala+Restaurant+Mykonos"
     },
     {
       name: "Rhino Vegan",
       category: "Breakfast & Cafe",
       description: "Specialty vegan meals and plant-based street food creations.",
-      perk: "10% off the menu for Eleanna's guests",
+      perk: "10% off the menu for Eleanna’s guests",
       mapsQuery: "Rhino+Vegan+Mykonos"
     },
     {

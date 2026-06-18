@@ -44,7 +44,7 @@ export default function App() {
             onClick={() => setIsMenuOpen(true)}
           />
         </div>
-        <Link to="/" className="text-xl font-serif tracking-[0.2em] text-on-surface uppercase">ELEANNA&apos;S</Link>
+        <Link to="/" className="text-xl font-serif tracking-[0.2em] text-on-surface uppercase">ELEANNA’S</Link>
         <div className="flex items-center gap-4">
           <ConciergeBell 
             className="w-6 h-6 text-primary cursor-pointer hover:scale-110 transition-transform" 

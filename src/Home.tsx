@@ -294,110 +294,6 @@ export default function HomePage() {
           </div>
 
           <div className="px-6 space-y-8 max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <motion.div
-                {...fadeIn}
-                className="bg-surface-container-lowest rounded-3xl p-8 border border-outline-variant/20 shadow-sm relative overflow-hidden"
-              >
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/5 rounded-full blur-2xl pointer-events-none" />
-                <div className="relative z-10">
-                  <div className="flex items-start gap-5">
-                    <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center shrink-0 border border-blue-100">
-                      <Info className="w-8 h-8" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-3 mb-2">
-                        <h4 className="text-3xl font-serif">Fresh & Clean</h4>
-                        <span className="bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-blue-200">
-                          EUR 1 / Item
-                        </span>
-                      </div>
-                      <p className="text-on-surface/70 font-sans leading-relaxed mb-6">
-                        Laundry is available for wash and dry at EUR 1 per item.
-                      </p>
-                      <div className="space-y-3">
-                        {[
-                          "Pack your clothes into the designated laundry bag.",
-                          "Place the exact change inside the bag.",
-                          "Leave the bag by your door inside your room for morning pickup.",
-                          "Laundry is returned the following morning."
-                        ].map((step) => (
-                          <div key={step} className="flex gap-3 text-sm font-sans text-on-surface/80 leading-relaxed">
-                            <CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" />
-                            <span>{step}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                {...fadeIn}
-                className="bg-surface-container-lowest rounded-3xl p-8 border border-outline-variant/20 shadow-sm relative overflow-hidden"
-              >
-                <div className="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/5 rounded-full blur-2xl pointer-events-none" />
-                <div className="relative z-10">
-                  <div className="flex items-start gap-5">
-                    <div className="w-16 h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center shrink-0 border border-amber-100">
-                      <Briefcase className="w-8 h-8" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-3 mb-2">
-                        <h4 className="text-3xl font-serif">Luggage Transfer</h4>
-                        <span className="bg-amber-100 text-amber-700 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-amber-200">
-                          Arrange Ahead
-                        </span>
-                      </div>
-                      <p className="text-on-surface/70 font-sans leading-relaxed mb-5">
-                        We can help move your bags to your taxi or bus station so you do not have to handle the heavy lifting.
-                      </p>
-                      <div className="bg-amber-50 border border-amber-200/60 p-5 rounded-2xl mb-5 shadow-sm">
-                        <div className="flex gap-4 items-start text-amber-900">
-                          <Clock className="w-6 h-6 shrink-0 mt-0.5 text-amber-600" />
-                          <p className="text-sm font-sans leading-relaxed">
-                            <strong className="block mb-1 text-amber-950 font-bold">Timing is everything</strong>
-                            Please let us know 30 minutes before departure so pickup can be coordinated in time.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-4 items-center">
-                        <button
-                          onClick={() => window.open("https://wa.me/306934596482", "_blank")}
-                          className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl text-[10px] uppercase font-bold tracking-widest hover:bg-[#20bd5a] transition-colors shadow-md shadow-[#25D366]/20"
-                        >
-                          <MessageCircle className="w-5 h-5" /> Schedule Pickup
-                        </button>
-                        <p className="text-[10px] uppercase tracking-[0.1em] font-bold text-on-surface/40">Include payment with luggage</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            <motion.div
-              {...fadeIn}
-              className="bg-surface-container-low rounded-3xl p-8 flex flex-col md:flex-row items-center gap-8 shadow-sm border border-outline-variant/10"
-            >
-              <div className="w-16 h-16 bg-white border border-outline-variant/20 rounded-[1.5rem] flex items-center justify-center shrink-0">
-                <Briefcase className="w-8 h-8 text-primary" />
-              </div>
-              <div className="text-center md:text-left flex-1">
-                <h4 className="text-2xl font-serif mb-2">Luggage Storage</h4>
-                <p className="font-sans text-on-surface/70 text-sm leading-relaxed mb-4">
-                  Storage is available on checkout only when locker space remains. Message your room number and preferred drop-off time first.
-                </p>
-                <button
-                  onClick={() => window.open("https://wa.me/306934596482", "_blank")}
-                  className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary hover:text-primary-container transition-colors border-b border-primary/20 pb-1"
-                >
-                  <MessageCircle className="w-4 h-4" /> Request Storage
-                </button>
-              </div>
-            </motion.div>
-
             <motion.div
               className="p-10 bg-surface-container-lowest rounded-[3rem] shadow-sm relative overflow-hidden group"
               {...fadeIn}
@@ -431,6 +327,65 @@ export default function HomePage() {
                     <MessageCircle className="w-5 h-5" /> Contact Driver
                   </button>
                 </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              {...fadeIn}
+              className="bg-surface-container-lowest rounded-3xl p-8 border border-outline-variant/20 shadow-sm relative overflow-hidden"
+            >
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/5 rounded-full blur-2xl pointer-events-none" />
+              <div className="relative z-10">
+                <div className="flex items-start gap-5">
+                  <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center shrink-0 border border-blue-100">
+                    <Info className="w-8 h-8" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                      <h4 className="text-3xl font-serif">Fresh & Clean</h4>
+                      <span className="bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-blue-200">
+                        EUR 1 / Item
+                      </span>
+                    </div>
+                    <p className="text-on-surface/70 font-sans leading-relaxed mb-6">
+                      Laundry is available for wash and dry at EUR 1 per item.
+                    </p>
+                    <div className="space-y-3">
+                      {[
+                        "Pack your clothes into the designated laundry bag.",
+                        "Place the exact change inside the bag.",
+                        "Leave the bag by your door inside your room for morning pickup.",
+                        "Laundry is returned the following morning."
+                      ].map((step) => (
+                        <div key={step} className="flex gap-3 text-sm font-sans text-on-surface/80 leading-relaxed">
+                          <CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" />
+                          <span>{step}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              {...fadeIn}
+              className="bg-surface-container-low rounded-3xl p-8 flex flex-col md:flex-row items-center gap-8 shadow-sm border border-outline-variant/10"
+            >
+              <div className="w-16 h-16 bg-white border border-outline-variant/20 rounded-[1.5rem] flex items-center justify-center shrink-0">
+                <Briefcase className="w-8 h-8 text-primary" />
+              </div>
+              <div className="text-center md:text-left flex-1">
+                <h4 className="text-2xl font-serif mb-2">Luggage Storage</h4>
+                <p className="font-sans text-on-surface/70 text-sm leading-relaxed mb-4">
+                  Storage is available on checkout only when locker space remains. Message your room number and preferred drop-off time first.
+                </p>
+                <button
+                  onClick={() => window.open("https://wa.me/306934596482", "_blank")}
+                  className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary hover:text-primary-container transition-colors border-b border-primary/20 pb-1"
+                >
+                  <MessageCircle className="w-4 h-4" /> Request Storage
+                </button>
               </div>
             </motion.div>
 
