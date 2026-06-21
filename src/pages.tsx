@@ -1011,9 +1011,9 @@ export function Excursions() {
         {/* Mykonos Highlights Tour */}
         <section>
           <h2 className="text-3xl font-serif italic text-center mb-6">Mykonos Highlights Tour</h2>
-          <div className="grid grid-cols-2 gap-3">
-            <img src="/images/tours/tour-1.jpg" alt="Mykonos Highlights Tour" className="w-full h-64 sm:h-80 object-cover rounded-2xl" />
-            <img src="/images/tours/tour-4.jpg" alt="Mykonos Town View" className="w-full h-64 sm:h-80 object-cover rounded-2xl" />
+          <div className="grid grid-cols-2 gap-3 items-start">
+            <img src="/images/tours/tour-1.jpg" alt="Mykonos Highlights Tour" className="w-full rounded-2xl" />
+            <img src="/images/tours/tour-4.jpg" alt="Mykonos Town View" className="w-full rounded-2xl" />
           </div>
         </section>
 
