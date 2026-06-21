@@ -1010,68 +1010,11 @@ export function Excursions() {
         
         {/* Mykonos Highlights Tour */}
         <section>
-          <div className="flex items-center gap-4 mb-8 justify-center">
-            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-              <Bus className="w-6 h-6 text-primary" />
-            </div>
-            <h2 className="text-3xl font-serif italic text-on-surface">Mykonos Highlights Tour</h2>
+          <h2 className="text-3xl font-serif italic text-center mb-6">Mykonos Highlights Tour</h2>
+          <div className="grid grid-cols-2 gap-3">
+            <img src="/images/tours/tour-1.jpg" alt="Mykonos Highlights Tour" className="w-full h-64 sm:h-80 object-cover rounded-2xl" />
+            <img src="/images/tours/tour-4.jpg" alt="Mykonos Town View" className="w-full h-64 sm:h-80 object-cover rounded-2xl" />
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-surface-container-lowest border border-outline-variant/20 rounded-3xl overflow-hidden shadow-sm"
-          >
-            {/* Two photos side by side */}
-            <div className="grid grid-cols-2 h-64 sm:h-80">
-              <img src="/images/tours/tour-1.jpg" alt="Mykonos Windmills at Sunset" className="w-full h-full object-cover" />
-              <img src="/images/tours/tour-4.jpg" alt="Mykonos Town View" className="w-full h-full object-cover" />
-            </div>
-
-            {/* Tour info */}
-            <div className="p-6 sm:p-8">
-              <p className="text-xs uppercase tracking-widest font-bold text-primary mb-2">Guided Tour</p>
-              <h3 className="text-2xl font-serif mb-4">Discover the Best of Mykonos</h3>
-              <p className="text-sm text-on-surface/70 font-sans leading-relaxed mb-6">
-                Visit Armenistis Lighthouse for panoramic island views. Stop at beautiful Kalafatis Beach and continue to the traditional village of Ano Mera where you can explore the village square or the historic Monastery of Panagia Tourliani. The tour continues in Mykonos Town where you will walk through the iconic white streets and see the famous Windmills, Little Venice and the beautiful Paraportiani Church.
-              </p>
-
-              {/* Badges */}
-              <div className="flex flex-wrap gap-3 mb-6">
-                <span className="flex items-center gap-1.5 bg-surface-container px-3 py-1.5 rounded-full text-xs font-bold text-on-surface/70 border border-outline-variant/20">
-                  <Clock className="w-3.5 h-3.5 text-primary" /> 3.5 hours
-                </span>
-                <span className="flex items-center gap-1.5 bg-surface-container px-3 py-1.5 rounded-full text-xs font-bold text-on-surface/70 border border-outline-variant/20">
-                  <Users className="w-3.5 h-3.5 text-primary" /> €55 per person
-                </span>
-                <span className="flex items-center gap-1.5 bg-surface-container px-3 py-1.5 rounded-full text-xs font-bold text-on-surface/70 border border-outline-variant/20">
-                  <Bus className="w-3.5 h-3.5 text-primary" /> A/C Bus
-                </span>
-                <span className="flex items-center gap-1.5 bg-surface-container px-3 py-1.5 rounded-full text-xs font-bold text-on-surface/70 border border-outline-variant/20">
-                  <MapPin className="w-3.5 h-3.5 text-primary" /> English Guide
-                </span>
-              </div>
-
-              {/* Meeting point & times */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                <div className="bg-surface-container rounded-2xl p-4">
-                  <p className="text-[10px] uppercase tracking-widest font-bold text-on-surface/50 mb-1">Meeting Point</p>
-                  <p className="text-sm font-medium">Tourlos New Port<br />Cruise Ship Terminal</p>
-                </div>
-                <div className="bg-surface-container rounded-2xl p-4">
-                  <p className="text-[10px] uppercase tracking-widest font-bold text-on-surface/50 mb-1">Departure Times</p>
-                  <p className="text-sm font-medium">09:00 &nbsp;|&nbsp; 10:30 &nbsp;|&nbsp; 14:30</p>
-                </div>
-              </div>
-
-              <button
-                onClick={() => window.open("https://wa.me/306977246788?text=I'm interested in the Mykonos Highlights Tour", "_blank")}
-                className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl text-xs uppercase font-bold tracking-widest hover:bg-[#20bd5a] transition-colors shadow-md shadow-[#25D366]/20"
-              >
-                <MessageCircle className="w-4 h-4" /> Book via WhatsApp
-              </button>
-            </div>
-          </motion.div>
         </section>
 
         {/* Island Activities Grid */}
