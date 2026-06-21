@@ -1013,7 +1013,7 @@ export function Excursions() {
           <h2 className="text-3xl font-serif italic text-center mb-6">Mykonos Highlights Tour</h2>
           <div className="grid grid-cols-2 gap-3 items-start">
             <img src="/images/tours/tour-1.jpg" alt="Mykonos Highlights Tour" className="w-full rounded-2xl" />
-            <img src="/images/tours/tour-4.jpg" alt="Mykonos Town View" className="w-full rounded-2xl" />
+            <img src="/images/tours/tour-highlights.jpg" alt="Tour Highlights" className="w-full rounded-2xl" />
           </div>
         </section>
 
