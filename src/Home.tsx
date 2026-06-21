@@ -245,7 +245,7 @@ export default function HomePage() {
                   {[
                     { icon: Key, label: "Check-In / Out", value: "3:00 PM / 11:00 AM" },
                     { icon: Clock, label: "Housekeeping", value: "Daily from 11:00 AM to 3:00 PM" },
-                    { icon: Phone, label: "Concierge", value: "+306934596482" },
+                    { icon: Phone, label: "Concierge", value: "+306977246788" },
                     { icon: AlertCircle, label: "Emergency", value: "112 / 166 / Police 100" }
                   ].map((item) => (
                     <div key={item.label} className="p-5 rounded-2xl bg-surface border border-outline-variant/10">
@@ -273,7 +273,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <button
-                  onClick={() => window.open("https://wa.me/306934596482", "_blank")}
+                  onClick={() => window.open("https://wa.me/306977246788", "_blank")}
                   className="w-full bg-[#25D366] text-white px-6 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform shadow-lg shadow-[#25D366]/20"
                 >
                   <MessageCircle className="w-5 h-5" /> Contact Concierge
@@ -381,7 +381,7 @@ export default function HomePage() {
                   Storage is available on checkout only when locker space remains. Message your room number and preferred drop-off time first.
                 </p>
                 <button
-                  onClick={() => window.open("https://wa.me/306934596482", "_blank")}
+                  onClick={() => window.open("https://wa.me/306977246788", "_blank")}
                   className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary hover:text-primary-container transition-colors border-b border-primary/20 pb-1"
                 >
                   <MessageCircle className="w-4 h-4" /> Request Storage
@@ -575,7 +575,7 @@ export default function HomePage() {
                 <h5 className="font-serif text-lg mb-2">{other}</h5>
                 <p className="text-[11px] text-on-surface/50 mb-4">Authentic Cycladic flavors and atmosphere</p>
                 <button
-                  onClick={() => window.open(`https://wa.me/306934596482?text=I'm interested in exploring restaurants like ${other}`, "_blank")}
+                  onClick={() => window.open(`https://wa.me/306977246788?text=I'm interested in exploring restaurants like ${other}`, "_blank")}
                   className="text-[10px] font-bold text-primary uppercase tracking-widest border-b border-primary/30 pb-1 cursor-pointer hover:border-primary transition-all"
                 >
                   View More
@@ -627,7 +627,7 @@ export default function HomePage() {
                   The most romantic spot on the island. Historic houses built on the edge of the sea, perfect for sunset cocktails and capturing the iconic Mykonos skyline.
                 </p>
                 <button
-                  onClick={() => window.open("https://wa.me/306934596482?text=I'd%20like%20to%20know%20more%20about%20your%20Little%20Venice%20tours", "_blank")}
+                  onClick={() => window.open("https://wa.me/306977246788?text=I'd%20like%20to%20know%20more%20about%20your%20Little%20Venice%20tours", "_blank")}
                   className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] border-b-2 border-primary pb-2 hover:gap-5 transition-all"
                 >
                   Explore Tours <ExternalLink className="w-4 h-4" />
@@ -678,7 +678,7 @@ export default function HomePage() {
                 <h5 className="text-2xl font-serif mb-4 text-white">{bar.name}</h5>
                 <p className="text-sm text-stone-400 mb-10 flex-1 leading-relaxed">{bar.desc}</p>
                 <button
-                  onClick={() => window.open(`https://wa.me/306934596482?text=I'd%20like%20to%20book%20a%20table%20at%20${bar.name}`, "_blank")}
+                  onClick={() => window.open(`https://wa.me/306977246788?text=I'd%20like%20to%20book%20a%20table%20at%20${bar.name}`, "_blank")}
                   className="w-full py-4 border border-primary-container text-primary-container text-[10px] font-bold uppercase tracking-[0.3em] rounded-2xl hover:bg-primary-container hover:text-on-surface transition-all"
                 >
                   Book a Table

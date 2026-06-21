@@ -192,7 +192,7 @@ export function HotelInfo() {
                If you have specific preferences, feel free to reach out.
              </p>
              <button 
-                onClick={() => window.open("https://wa.me/306934596482", "_blank")}
+                onClick={() => window.open("https://wa.me/306977246788", "_blank")}
                 className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-[#25D366] text-white text-[10px] font-bold uppercase tracking-widest rounded-xl hover:bg-[#20bd5a] transition-colors shadow-lg shadow-[#25D366]/20"
               >
                 <MessageCircle className="w-4 h-4" /> Message Us
@@ -205,10 +205,10 @@ export function HotelInfo() {
           <h3 className="text-2xl font-serif italic text-center mb-2">Important Contacts</h3>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <a href="https://wa.me/306934596482" target="_blank" rel="noreferrer" className="flex flex-col items-center p-6 bg-surface-container-lowest border border-outline-variant/10 rounded-2xl hover:scale-[1.02] transition-transform text-center shadow-sm">
+            <a href="https://wa.me/306977246788" target="_blank" rel="noreferrer" className="flex flex-col items-center p-6 bg-surface-container-lowest border border-outline-variant/10 rounded-2xl hover:scale-[1.02] transition-transform text-center shadow-sm">
               <Phone className="w-8 h-8 text-primary mb-3" />
               <p className="text-xs uppercase tracking-widest font-bold text-on-surface/50 mb-2">Eleannas Team</p>
-              <p className="font-serif text-lg text-primary">+306934596482</p>
+              <p className="font-serif text-lg text-primary">+306977246788</p>
               <span className="text-[9px] bg-[#25D366]/10 text-[#25D366] font-bold px-2 py-1 rounded-full mt-2 tracking-wider">WHATSAPP</span>
             </a>
 
@@ -776,7 +776,7 @@ export function Transfers() {
 
               <div className="flex flex-wrap gap-4 items-center">
                 <button 
-                  onClick={() => window.open("https://wa.me/306934596482", "_blank")}
+                  onClick={() => window.open("https://wa.me/306977246788", "_blank")}
                   className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl text-[10px] uppercase font-bold tracking-widest hover:bg-[#20bd5a] transition-colors shadow-md shadow-[#25D366]/20"
                 >
                   <MessageCircle className="w-5 h-5" /> Schedule Pickup
@@ -799,7 +799,7 @@ export function Transfers() {
                We do store luggage on checkout only if there is any space left in lockers. WhatsApp us your room number and request a time to drop off your bags.
              </p>
              <button 
-                onClick={() => window.open("https://wa.me/306934596482", "_blank")}
+                onClick={() => window.open("https://wa.me/306977246788", "_blank")}
                 className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary hover:text-primary-container transition-colors border-b border-primary/20 pb-1"
               >
                 <MessageCircle className="w-4 h-4" /> Request Storage
@@ -1127,7 +1127,7 @@ export function Excursions() {
                    </div>
 
                    <button 
-                      onClick={() => window.open(`https://wa.me/306934596482?text=I'm interested in booking the ${cruise.title}`, "_blank")}
+                      onClick={() => window.open(`https://wa.me/306977246788?text=I'm interested in booking the ${cruise.title}`, "_blank")}
                       className="mt-8 w-full md:w-auto inline-flex items-center justify-center gap-2 bg-on-surface text-surface px-6 py-3 rounded-xl text-xs uppercase font-bold tracking-widest hover:bg-on-surface/80 transition-colors"
                     >
                       <MessageCircle className="w-4 h-4" /> Enquire Now
