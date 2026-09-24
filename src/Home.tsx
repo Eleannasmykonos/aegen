@@ -9,7 +9,6 @@ import {
   ChevronDown,
   Clock,
   Compass,
-  Copy,
   ExternalLink,
   GlassWater,
   Home,
@@ -34,20 +33,19 @@ const fadeIn = {
 } as const;
 
 const wifiNetworks = [
-  { rooms: "1, 2, 3, 5", network: "Eleannas1", pass: "eleannas1" },
-  { rooms: "4, 12", network: "Eleannas Seaview", pass: "Seaview25" },
-  { rooms: "6 & 7", network: "Eleannas Deluxe", pass: "eleannas4" },
-  { rooms: "8, 9, 10", network: "Eleannas Studios", pass: "eleannas5" },
-  { rooms: "11", network: "Eleannas Home", pass: "eleannas3" },
-  { rooms: "14, 16", network: "Vastaous", pass: "sunset2021" },
-  { rooms: "15", network: "Dinhouse", pass: "dinhouse1" },
-  { rooms: "17, 18", network: "Eleannas View", pass: "eleannas5" }
+  { rooms: "1, 2, 3, 5", network: "Eleannas1" },
+  { rooms: "4, 12", network: "Eleannas Seaview" },
+  { rooms: "6 & 7", network: "Eleannas Deluxe" },
+  { rooms: "8, 9, 10", network: "Eleannas Studios" },
+  { rooms: "11", network: "Eleannas Home" },
+  { rooms: "14, 16", network: "Vastaous" },
+  { rooms: "15", network: "Dinhouse" },
+  { rooms: "17, 18", network: "Eleannas View" }
 ];
 
 export default function HomePage() {
   const [activeSection, setActiveSection] = useState("hotel");
   const [selectedDiningCategory, setSelectedDiningCategory] = useState("All");
-  const [copiedWifi, setCopiedWifi] = useState<string | null>(null);
 
   useEffect(() => {
     const observerOptions = {
@@ -74,12 +72,6 @@ export default function HomePage() {
 
     return () => observer.disconnect();
   }, []);
-
-  const handleCopy = async (text: string) => {
-    await navigator.clipboard.writeText(text);
-    setCopiedWifi(text);
-    window.setTimeout(() => setCopiedWifi(null), 2000);
-  };
 
   return (
     <div className="min-h-screen flex flex-col pt-16">
@@ -189,7 +181,7 @@ export default function HomePage() {
                   <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary mb-2">Wifi First</p>
                   <h4 className="text-3xl font-serif mb-2">Get Connected</h4>
                   <p className="text-sm text-on-surface/60 font-sans">
-                    Find your room number below and tap the password icon to copy it.
+                    Find your room number below for your network name. Message us for the password.
                   </p>
                 </div>
               </div>
@@ -198,26 +190,9 @@ export default function HomePage() {
                 {wifiNetworks.map((net) => (
                   <div key={net.rooms} className="p-4 border border-outline-variant/20 rounded-2xl bg-surface">
                     <p className="text-[10px] uppercase tracking-widest text-primary font-bold mb-3">Room {net.rooms}</p>
-                    <div className="flex justify-between items-center mb-2 gap-4">
+                    <div className="flex justify-between items-center gap-4">
                       <span className="text-xs font-medium text-on-surface/60">Network</span>
                       <span className="text-sm font-bold text-right">{net.network}</span>
-                    </div>
-                    <div className="flex justify-between items-center gap-4">
-                      <span className="text-xs font-medium text-on-surface/60">Password</span>
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-mono bg-on-surface/5 px-2 py-0.5 rounded">{net.pass}</span>
-                        <button
-                          onClick={() => void handleCopy(net.pass)}
-                          className="p-1.5 hover:bg-on-surface/10 rounded-md transition-colors"
-                          title="Copy Password"
-                        >
-                          {copiedWifi === net.pass ? (
-                            <CheckCircle2 className="w-4 h-4 text-green-500" />
-                          ) : (
-                            <Copy className="w-4 h-4 text-on-surface/40" />
-                          )}
-                        </button>
-                      </div>
                     </div>
                   </div>
                 ))}

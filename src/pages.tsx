@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { 
   ChevronDown, Info, Utensils, Palmtree, Car, Compass, 
-  MapPin, ExternalLink, Zap, Key, Wifi, AlertCircle, Phone, Copy, Check,
+  MapPin, ExternalLink, Zap, Key, Wifi, AlertCircle, Phone, Check,
   CheckCircle2, Clock, ShieldAlert, Home as HomeIcon, MessageCircle, Shirt, Briefcase,
   Ship, Bus,
   Mountain, Landmark, Waves, Anchor, Sun, Moon,
@@ -108,23 +108,15 @@ export function Home() {
 }
 
 export function HotelInfo() {
-  const [copiedWifi, setCopiedWifi] = useState<string | null>(null);
-
-  const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedWifi(text);
-    setTimeout(() => setCopiedWifi(null), 2000);
-  };
-
   const wifiNetworks = [
-    { rooms: "1, 2, 3, 5", network: "Eleannas1", pass: "eleannas1" },
-    { rooms: "4, 12", network: "Eleannas Seaview", pass: "Seaview25" },
-    { rooms: "6 & 7", network: "Eleannas Deluxe", pass: "eleannas4" },
-    { rooms: "8, 9, 10", network: "Eleannas Studios", pass: "litous05" },
-    { rooms: "11", network: "Eleannas Home", pass: "eleannas3" },
-    { rooms: "14, 16", network: "Vastaous", pass: "sunset2021" },
-    { rooms: "15", network: "Dinhouse", pass: "dinhouse1" },
-    { rooms: "17, 18", network: "Eleannas View", pass: "eleannas5" },
+    { rooms: "1, 2, 3, 5", network: "Eleannas1" },
+    { rooms: "4, 12", network: "Eleannas Seaview" },
+    { rooms: "6 & 7", network: "Eleannas Deluxe" },
+    { rooms: "8, 9, 10", network: "Eleannas Studios" },
+    { rooms: "11", network: "Eleannas Home" },
+    { rooms: "14, 16", network: "Vastaous" },
+    { rooms: "15", network: "Dinhouse" },
+    { rooms: "17, 18", network: "Eleannas View" },
   ];
 
   return (
@@ -150,7 +142,7 @@ export function HotelInfo() {
             </div>
             <div>
               <h3 className="text-2xl font-serif">Get Connected</h3>
-              <p className="text-sm text-on-surface/60 font-sans">Select your room number to find your network.</p>
+              <p className="text-sm text-on-surface/60 font-sans">Select your room number to find your network. Message us for the password.</p>
             </div>
           </div>
           
@@ -158,22 +150,9 @@ export function HotelInfo() {
             {wifiNetworks.map((net, idx) => (
               <div key={idx} className="p-4 border border-outline-variant/20 rounded-2xl bg-surface transition-colors hover:border-primary/30">
                 <p className="text-[10px] uppercase tracking-widest text-primary font-bold mb-3">Room {net.rooms}</p>
-                <div className="flex justify-between items-center mb-2">
+                <div className="flex justify-between items-center">
                   <span className="text-xs font-medium text-on-surface/60">Network:</span>
                   <span className="text-sm font-bold">{net.network}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-xs font-medium text-on-surface/60">Password:</span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-mono bg-on-surface/5 px-2 py-0.5 rounded">{net.pass}</span>
-                    <button 
-                      onClick={() => handleCopy(net.pass)}
-                      className="p-1.5 hover:bg-on-surface/10 rounded-md transition-colors"
-                      title="Copy Password"
-                    >
-                      {copiedWifi === net.pass ? <CheckCircle2 className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4 text-on-surface/40" />}
-                    </button>
-                  </div>
                 </div>
               </div>
             ))}
